@@ -325,7 +325,7 @@ if($conditions != 0) { ?>
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-438397-7']);
-  _gaq.push(['_setDomainName', '<?php echo $_SERVER['HTTP_HOST']?>);
+  _gaq.push(['_setDomainName', '<?php echo $_SERVER['HTTP_HOST']?>');
   _gaq.push(['_setAllowLinker', true]);
   _gaq.push(['_trackPageview']);
 
