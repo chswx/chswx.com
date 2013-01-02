@@ -2,7 +2,7 @@
 
 include('magpie/rss_fetch.inc');
 
-$wx_data = "http://rss.wunderground.com/auto/rss_full/SC/Charleston.xml";
+$wx_data = "http://rss.wunderground.com/auto/rss_full/SC/KCHS.xml";
 $rss = fetch_rss($wx_data);
 function getWxData($feed)
 {
