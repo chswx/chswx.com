@@ -245,8 +245,9 @@ div#footer a:hover
 </script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script>
-$('.alert').click(function(e) {
-	$(this).children('ul').toggle('fast');
+$('.alert .alert-title').click(function(e) {
+	var parentID = '#' + e.target.parentNode.id.toString();
+	$(parentID + ' ul').toggle();
 });
 </script>
 </head>
@@ -328,7 +329,7 @@ if(isset($data['current_observation'])) {
 		{
 			$advisory_class = "normal";
 		}
-		echo "<li><span class=\"alert " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
+		echo "<li class=\"alert\"><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
 		echo "<ul><li>{$alert['message']}</li></ul></li>";
 	}
 	?>
@@ -352,6 +353,7 @@ if(isset($data['current_observation'])) {
 			<?php }
 		?>
 	</ul>
+</div>
 </div>
 </div>
 <div id="footer"><div id="footer_wrapper">Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a> and <a href="http://facebook.com/chswx">Facebook</a> / Data by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a><br /><br /><strong>Disclaimer:</strong> Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather.</div>
