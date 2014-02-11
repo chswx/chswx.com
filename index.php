@@ -217,7 +217,7 @@ div#footer a:hover
 	color: #888;
 }
 
-.alert
+.alert-title
 {
 	cursor: pointer;
 }
@@ -225,6 +225,13 @@ div#footer a:hover
 .alert ul
 {
 	display: none;
+}
+
+.alert ul li
+{
+ 	font-weight: normal;
+	font-size: 0.7em;
+	padding-top: 10px;
 }
 </style>
 <meta http-equiv="refresh" content="2700;url=<?php echo $_SERVER['HTTP_HOST']?>" />
@@ -246,8 +253,9 @@ div#footer a:hover
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script>
 $(document).ready(function($) {
-	$('.alert-title').click(function(e) {
-		var parentID = '#' + e.target.parentNode.id.toString();
+	$('.alert-title').click(function(event) {
+		console.log(event.target.parentNode.id.toString());
+		var parentID = '#' + event.target.parentNode.id.toString();
 		$(parentID + ' ul').toggle();
 	});
 });
@@ -332,7 +340,7 @@ if(isset($data['current_observation'])) {
 			$advisory_class = "normal";
 		}
 		echo "<li class=\"alert\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
-		echo str_replace("\n", '<br />', "<ul><li>{$alert['message']}</li></ul></li>");
+		echo "<ul><li>" . str_replace("\n",'<br />',trim($alert['message'])) . "</li></ul></li>";
 	}
 	?>
 </div>
