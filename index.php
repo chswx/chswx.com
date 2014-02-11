@@ -329,7 +329,7 @@ if(isset($data['current_observation'])) {
 		{
 			$advisory_class = "normal";
 		}
-		echo "<li class=\"alert\" id=\"{$alert['phenomena']}.{$alert['significance']}\""><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
+		echo "<li class=\"alert\" id=\"{$alert['phenomena']}.{$alert['significance']}\"><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
 		echo "<ul><li>{$alert['message']}</li></ul></li>";
 	}
 	?>
