@@ -215,6 +215,13 @@ div#footer a:hover
 	color: rgb(245,245,245);
 }
 
+.updated-time
+{
+	margin-top:15px;
+	font-size: 0.7em;
+	color: #888;
+}
+
 .alert
 {
 	cursor: pointer;
@@ -294,7 +301,7 @@ if(isset($data['current_observation'])) {
 		<span class="title">Pressure</span> <?php echo $ob['pressure_in'];?> 
 		<span class="title">Wind</span> <?php echo $ob['wind_dir'];?>&nbsp;<?php echo $ob['wind_mph']?> <?php if($ob['wind_gust_mph'] > 0): ?>(gusts to <?php echo $ob['wind_gust_mph']?>)<?php endif ;?>
 	</div>
-	<div class="updated-time">Last updated <?php echo date('M j, Y g:ia',$ob['observation_epoch']); ?></div>
+	<div class="updated-time">last updated <?php echo date('M j, Y g:ia',$ob['observation_epoch']); ?></div>
 <?php } else { ?>
 	<div class="fail">Temporarily Unavailable</div>
 <?php } ?>
@@ -352,7 +359,7 @@ if(isset($data['current_observation'])) {
 </div>
 </div>
 </div>
-<div id="footer"><div id="footer_wrapper">Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a> and <a href="http://identi.ca/chswx">identi.ca</a> / Data by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a><br /><br /><strong>Disclaimer:</strong> Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather.</div>
+<div id="footer"><div id="footer_wrapper">Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a> and <a href="http://facebook.com/chswx">Facebook</a> / Data by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a><br /><br /><strong>Disclaimer:</strong> Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather.</div>
 </div>
 </body>
 <!-- Served by <?php echo $_SERVER['HTTP_HOST']; ?> -->
