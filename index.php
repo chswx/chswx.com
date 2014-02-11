@@ -135,10 +135,15 @@ div#currentwx #others span
 div#advisories ul
 {
 	list-style-type:none;
-	font-weight: bold;
 	font-size: 1.15em;
 	margin: 0px;
 	padding: 0px;
+	letter-spacing: -0.04em;
+}
+
+div.advisories .alert-name
+{
+	font-weight: bold;
 }
 
 div#advisories .tor
@@ -339,7 +344,7 @@ if(isset($data['current_observation'])) {
 		{
 			$advisory_class = "normal";
 		}
-		echo "<li class=\"alert\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
+		echo "<li class=\"alert\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-title " . $advisory_class . "\"><span class=\"alert-name\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".</span>";
 		echo "<ul><li>" . str_replace("\n",'<br />',trim($alert['message'])) . "</li></ul></li>";
 	}
 	?>
