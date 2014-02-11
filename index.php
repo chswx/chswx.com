@@ -245,9 +245,11 @@ div#footer a:hover
 </script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script>
-$('.alert-title').click(function(e) {
-	var parentID = '#' + e.target.parentNode.id.toString();
-	$(parentID + ' ul').toggle();
+$(document).ready(function($) {
+	$('.alert-title').click(function(e) {
+		var parentID = '#' + e.target.parentNode.id.toString();
+		$(parentID + ' ul').toggle();
+	});
 });
 </script>
 </head>
@@ -329,7 +331,7 @@ if(isset($data['current_observation'])) {
 		{
 			$advisory_class = "normal";
 		}
-		echo "<li class=\"alert\" id=\"{$alert['phenomena']}.{$alert['significance']}\"><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
+		echo "<li class=\"alert\" id=\"{$alert['phenomena']}.{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
 		echo "<ul><li>{$alert['message']}</li></ul></li>";
 	}
 	?>
