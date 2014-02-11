@@ -141,7 +141,7 @@ div#advisories ul
 	letter-spacing: -0.04em;
 }
 
-div.advisories .alert-name
+div#advisories .alert-name
 {
 	font-weight: bold;
 }
