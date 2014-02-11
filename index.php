@@ -306,7 +306,7 @@ if(isset($data['current_observation'])) {
 	<div id="temp" class="<?php echo $tempcolor?>"><?php echo $temperature?></div>
 	<div id="sky"><?php echo $ob['weather'];?></div>
 	<div id="others">
-		<?php if ($ob['feelslike_f'] != $temperature): ?><span class="title">Feels like:</span> <?php echo $ob['feelslike_f']?><?php endif; ?>
+		<?php if ($ob['feelslike_f'] != $temperature): ?><span class="title">Feels like</span> <?php echo $ob['feelslike_f']?><?php endif; ?>
 		<span class="title">Dewpoint</span> <?php echo $ob['dewpoint_f'];?> 
 		<span class="title">Humidity</span> <?php echo $ob['relative_humidity'];?> 
 		<span class="title">Pressure</span> <?php echo $ob['pressure_in'];?> 
