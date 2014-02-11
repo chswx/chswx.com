@@ -239,7 +239,6 @@ div#footer a:hover
 	padding-top: 10px;
 }
 </style>
-<meta http-equiv="refresh" content="2700;url=http://<?php echo $_SERVER['HTTP_HOST']?>" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -374,5 +373,5 @@ if(isset($data['current_observation'])) {
 <div id="footer"><div id="footer_wrapper">Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a> and <a href="http://facebook.com/chswx">Facebook</a> / Data by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a><br /><br /><strong>Disclaimer:</strong> Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather.</div>
 </div>
 </body>
-<!-- Served by <?php echo $_SERVER['HTTP_HOST']; ?> -->
+<!-- Generated on <?php echo date('M j, Y g:ia'); ?> -->
 </html>
