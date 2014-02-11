@@ -46,12 +46,7 @@ width: 800px;
 	display: none;
 }
 
-h1 { color: rgb(220,220,220); font-weight: 200; letter-spacing: -0.05em; padding: 10px 0px; margin: 0 0 20px 0; font-size: 2.5em; text-shadow: 1px 1px 3px rgba(64,64,64,0.8); background-color: rgba(62,94,133,0.6); -webkit-border-bottom-right-radius: 10px;
--webkit-border-bottom-left-radius: 10px;
--moz-border-radius-bottomright: 10px;
--moz-border-radius-bottomleft: 10px;
-border-bottom-right-radius: 10px;
-border-bottom-left-radius: 10px; }
+h1 { color: rgb(220,220,220); font-weight: 200; letter-spacing: -0.05em; padding: 10px 0px; margin: 0 0 20px 0; font-size: 2.5em; text-shadow: 1px 1px 3px rgba(64,64,64,0.8); }
 
 h1 span.city { color: #FFF; font-weight: 600 !important; }
 
@@ -257,7 +252,7 @@ $('.alert').click(function(e) {
 </head>
 <body>
 <div id="wrapper">
-<h1><span class="city">Charleston</span> Weather</h1>
+<h1><span class="city" title="Charleston Weather">#chswx</span></h1>
 <div id="current-and-forecast-wrapper">
 <h2>Currently</h2>
 <div id="currentwx">
@@ -306,10 +301,11 @@ if(isset($data['current_observation'])) {
 	<div class="fail">Temporarily Unavailable</div>
 <?php } ?>
 </div>
-<?php if (!empty($advisories)) 
+<?php if (!empty($data['alerts'])) 
 {
 ?>
 <div id="advisories">
+	<h2>Alerts</h2>
 	<ul>
 	<?php foreach($data['alerts'] as $alert)
 	{
@@ -356,7 +352,6 @@ if(isset($data['current_observation'])) {
 			<?php }
 		?>
 	</ul>
-</div>
 </div>
 </div>
 <div id="footer"><div id="footer_wrapper">Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a> and <a href="http://facebook.com/chswx">Facebook</a> / Data by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a><br /><br /><strong>Disclaimer:</strong> Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather.</div>
