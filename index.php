@@ -239,7 +239,7 @@ div#footer a:hover
 	padding-top: 10px;
 }
 </style>
-<meta http-equiv="refresh" content="2700;url=<?php echo $_SERVER['HTTP_HOST']?>" />
+<meta http-equiv="refresh" content="2700;url=http://<?php echo $_SERVER['HTTP_HOST']?>" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
