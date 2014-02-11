@@ -2,17 +2,17 @@
 
 // chswx test!  bring it on apw!
 
-include('inc/functions.php');
-$conditions = getWxData($rss);
-$forecast = getForecast($rss);
-$advisories = getAdvisoriesWU($rss);
-$sanitized_temp_array = explode('.',$conditions['temperature']['f']);
-$temperature = $sanitized_temp_array[0];
+$data = json_decode(file_get_contents('data/KCHS.json'),true);
+var_dump($data);
+
+$temperature = $data['current_observation']['temp_f'];
+
+//die();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Currently <?php if($conditions != 0) { echo $temperature ?> / <?php echo $conditions['sky']; } ?></title>
+<title>Currently <?php if(isset($data)) { echo $temperature ?> / <?php echo $data['current_observation']['weather']; } ?> | Charleston, SC Weather</title>
 <link rel="icon" href="images/favicon.png" type="image/png" />
 <style type="text/css">
 html
@@ -218,8 +218,18 @@ div#footer a:hover
 {
 	color: rgb(245,245,245);
 }
+
+.alert
+{
+	cursor: pointer;
+}
+
+.alert ul
+{
+	display: none;
+}
 </style>
-<meta http-equiv="refresh" content="2700;url=http://charlestonwx.com" />
+<meta http-equiv="refresh" content="2700;url=<?php echo $_SERVER['HTTP_HOST']?>" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -234,6 +244,12 @@ div#footer a:hover
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
+</script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+$('.alert').click(function(e) {
+	$(this).children('ul').toggle('fast');
+});
 </script>
 </head>
 <body>
@@ -269,13 +285,20 @@ else
 {
 	$tempcolor = "hot";
 }
-if($conditions != 0) { ?>
+if(isset($data['current_observation'])) { 
+	$ob = $data['current_observation'];
+
+	?>
 	<div id="temp" class="<?php echo $tempcolor?>"><?php echo $temperature?></div>
-	<div id="sky"><?php echo $conditions['sky'];?></div>
-	<div id="others"><span class="title">Humidity</span> <?php echo $conditions['humidity'];?> 
-		<span class="title">Pressure</span> <?php echo $conditions['pressure']['in'];?> 
-		<span class="title">Wind</span> <?php echo $conditions['wind_dir'];?>&nbsp;<?php echo $conditions['wind_speed']['mph']?>
+	<div id="sky"><?php echo $ob['weather'];?></div>
+	<div id="others">
+		<?php if ($ob['feelslike_f'] != $temperature): ?><span class="title">Feels like:</span> <?php echo $ob['feelslike_f']?><?php endif; ?>
+		<span class="title">Dewpoint</span> <?php echo $ob['dewpoint_f'];?> 
+		<span class="title">Humidity</span> <?php echo $ob['relative_humidity'];?> 
+		<span class="title">Pressure</span> <?php echo $ob['pressure_in'];?> 
+		<span class="title">Wind</span> <?php echo $ob['wind_dir'];?>&nbsp;<?php echo $ob['wind_mph']?> <?php if($ob['wind_gust_mph'] > 0): ?>(gusts to <?php echo $ob['wind_gust_mph']?>)<?php endif ;?>
 	</div>
+	<div class="updated-time">Last updated <?php echo date('M j, Y g:ia',$ob['observation_epoch']); ?></div>
 <?php } else { ?>
 	<div class="fail">Temporarily Unavailable</div>
 <?php } ?>
@@ -285,20 +308,20 @@ if($conditions != 0) { ?>
 ?>
 <div id="advisories">
 	<ul>
-	<?php for($i = 0; $i < sizeof($advisories); $i++)
+	<?php foreach($data['alerts'] as $alert)
 	{
 		// try to filter out bad advisories
 		$current_time = time();
 		
-		if($advisories[$i]['type'] == "Tornado Watch")
+		if($alert['phenomena'] == "TO")
 		{
 			$advisory_class = "tor";
 		}
-		else if($advisories[$i]['type'] == "Severe Thunderstorm Watch")
+		else if($alert['phenomena'] == "SV")
 		{
 			$advisory_class = "svr";
 		}
-		else if($advisories[$i]['type'] == "Flash Flood Watch" || $advisories[$i]['type'] == "Flash Flood Warning")
+		else if($alert['phenomena'] == 'FL' || $alert['phenomena'] == 'FF')
 		{
 			$advisory_class = "ffw";
 		}
@@ -306,9 +329,8 @@ if($conditions != 0) { ?>
 		{
 			$advisory_class = "normal";
 		}
-		if($advisory_class == "tor" || $advisory_class == "svr" || $advisory_class == "ffw") {
-			echo "<li><span class=\"" . $advisory_class . "\">" . $advisories[$i]['type'] . "</span> until " . $advisories[$i]['expires'] . ".</li>";
-		}
+		echo "<li><span class=\"alert " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
+		echo "<ul><li>{$alert['message']}</li></ul></li>";
 	}
 	?>
 </div>
@@ -317,11 +339,11 @@ if($conditions != 0) { ?>
 	<h2>Forecast</h2>
 	<ul>
 		<?php 
-			if(sizeof($forecast) == 3)
+			if(isset($data['forecast']))
 			{
-				for($i = 0; $i < sizeof($forecast); $i++)
+				foreach($data['forecast']['txt_forecast']['forecastday'] as $forecast)
 				{
-					?><li><span class="day"><?php echo $forecast[$i]['day']?></span> <span class="hidden">| </span><span class="forecast_text"><?php echo $forecast[$i]['desc']?></span></li>
+					?><li><span class="day"><?php echo $forecast['title']?></span> <span class="forecast_text"><?php echo $forecast['fcttext']?></span></li>
 					<?php
 				}
 			}
