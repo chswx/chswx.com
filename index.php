@@ -331,8 +331,8 @@ if(isset($data['current_observation'])) {
 		{
 			$advisory_class = "normal";
 		}
-		echo "<li class=\"alert\" id=\"{$alert['phenomena']}.{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
-		echo "<ul><li>{$alert['message']}</li></ul></li>";
+		echo "<li class=\"alert\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
+		echo str_replace("\n", '<br />', "<ul><li>{$alert['message']}</li></ul></li>");
 	}
 	?>
 </div>
