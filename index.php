@@ -3,11 +3,7 @@
 // chswx test!  bring it on apw!
 
 $data = json_decode(file_get_contents('data/KCHS.json'),true);
-var_dump($data);
-
 $temperature = $data['current_observation']['temp_f'];
-
-//die();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
