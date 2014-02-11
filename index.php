@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set ( 'America/New_York' );
 // chswx test!  bring it on apw!
 
 $data = json_decode(file_get_contents('data/KCHS.json'),true);
@@ -63,13 +63,13 @@ h2
 	-webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
-    margin: 10px 0px;
+    margin: 20px 0px;
 }
 
 div#currentwx
 {
 	text-align: center;
-	padding: 20px;
+	padding: 0 20px 20px 20px;
 }
 
 div#currentwx #temp
@@ -245,7 +245,7 @@ div#footer a:hover
 </script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script>
-$('.alert .alert-title').click(function(e) {
+$('.alert-title').click(function(e) {
 	var parentID = '#' + e.target.parentNode.id.toString();
 	$(parentID + ' ul').toggle();
 });
@@ -329,7 +329,7 @@ if(isset($data['current_observation'])) {
 		{
 			$advisory_class = "normal";
 		}
-		echo "<li class=\"alert\"><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
+		echo "<li class=\"alert\" id=\"{$alert['phenomena']}.{$alert['significance']}\""><span class=\"alert-title " . $advisory_class . "\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".";
 		echo "<ul><li>{$alert['message']}</li></ul></li>";
 	}
 	?>
