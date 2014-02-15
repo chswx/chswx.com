@@ -41,6 +41,17 @@ width: 800px;
 	margin-bottom: 20px;
 }
 
+.current-and-forecast-wrapper a 
+{
+	color: #4C71A3;
+	text-decoration: none;
+}
+
+.current-and-forecast-wrapper a:hover
+{
+	color: #000;
+}
+
 .hidden
 {
 	display: none;
@@ -220,6 +231,7 @@ div#footer a:hover
 	margin-top:15px;
 	font-size: 0.7em;
 	color: #888;
+	text-align: center;
 }
 
 .alert-title
@@ -353,7 +365,7 @@ if(isset($data['current_observation'])) {
 	<div class="updated-time"><a href="http://weather.gov/chs" target="_blank">NWS forecast</a> for Charleston updated at <?php echo $data['forecast']['txt_forecast']['date']?></div>
 	<ul>
 		<?php 
-			if(isset($data['forecast']))
+			if(isset($data['forecast']['txt_forecast']))
 			{
 				foreach($data['forecast']['txt_forecast']['forecastday'] as $forecast)
 				{
