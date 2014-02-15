@@ -8,3 +8,4 @@ cache/
 .DS_Store?
 
 /vendor/
+index.html
