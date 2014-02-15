@@ -41,13 +41,13 @@ width: 800px;
 	margin-bottom: 20px;
 }
 
-.current-and-forecast-wrapper a 
+#current-and-forecast-wrapper a 
 {
 	color: #4C71A3;
 	text-decoration: none;
 }
 
-.current-and-forecast-wrapper a:hover
+#current-and-forecast-wrapper a:hover
 {
 	color: #000;
 }
