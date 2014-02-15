@@ -236,7 +236,7 @@ div#footer a:hover
 
 #forecast .updated-time
 {
-	margin: 10px 0;
+	margin: 0 0 20px 0;
 }
 
 .alert-title
