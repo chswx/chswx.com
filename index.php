@@ -234,6 +234,11 @@ div#footer a:hover
 	text-align: center;
 }
 
+#forecast .updated-time
+{
+	margin: 10px 0;
+}
+
 .alert-title
 {
 	cursor: pointer;
