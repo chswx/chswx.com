@@ -2,7 +2,7 @@
 date_default_timezone_set ( 'America/New_York' );
 // chswx test!  bring it on apw!
 
-$data = json_decode(file_get_contents('data/KCHS.json'),true);
+$data = json_decode(file_get_contents('/home/chswx/www/data/KCHS.json'),true);
 $temperature = $data['current_observation']['temp_f'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -46,7 +46,7 @@ width: 800px;
 	display: none;
 }
 
-h1 { color: rgb(220,220,220); font-weight: 200; letter-spacing: -0.05em; padding: 10px 0px; margin: 0 0 20px 0; font-size: 2.5em; text-shadow: 1px 1px 3px rgba(64,64,64,0.8); }
+h1 { color: rgb(220,220,220); font-weight: 200; letter-spacing: -0.05em; padding: 10px 0px; margin: 0; font-size: 2.5em; text-shadow: 1px 1px 3px rgba(64,64,64,0.8); }
 
 h1 span.city { color: #FFF; font-weight: 600 !important; }
 
@@ -243,7 +243,6 @@ div#footer a:hover
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-438397-7']);
-  //_gaq.push(['_setDomainName', '<?php echo $_SERVER['HTTP_HOST']?>');
   _gaq.push(['_setAllowLinker', true]);
   _gaq.push(['_trackPageview']);
 
