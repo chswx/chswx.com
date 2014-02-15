@@ -350,6 +350,7 @@ if(isset($data['current_observation'])) {
 <?php } ?>
 <div id="forecast">
 	<h2>Forecast</h2>
+	<div class="updated-time"><a href="http://weather.gov/chs" target="_blank">NWS forecast</a> for Charleston updated at <?php echo $data['forecast']['date']?></div>
 	<ul>
 		<?php 
 			if(isset($data['forecast']))
