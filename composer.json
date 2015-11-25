@@ -1,0 +1,13 @@
+{
+    "name": "jaredwsmith/chswx-legacy",
+    "description": "Charleston Weather Legacy Site",
+    "require": {
+        "nategood/httpful": "*"
+    },
+    "authors": [
+        {
+            "name": "Jared Smith",
+            "email": "jared@jaredwsmith.com"
+        }
+    ]
+}
