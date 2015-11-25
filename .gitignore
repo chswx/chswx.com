@@ -9,6 +9,6 @@ composer.phar
 # OS generated files #
 
 .DS_Store?
-
+.idea
 /vendor/
 index.html
