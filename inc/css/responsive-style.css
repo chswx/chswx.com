@@ -1,0 +1,244 @@
+body {
+	font-family:  -apple-system, Helvetica Neue, Roboto, Arial, sans-serif;
+	margin: 0 auto;
+}
+
+a {
+	color: #005acc;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+div#wrapper {
+	padding: 10px;
+	max-width: 768px;
+	margin: 0 auto;
+}
+
+h1.main-title {
+	background-color: #005acc;
+	color: #FFF;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 5px;
+	border-top: 1px solid #348cd2;
+	border-bottom: 1px solid #003b9f;
+	text-align: center;
+	font-size: 1.6em;
+	text-shadow: 0px 0px 10px rgba(32,32,32,0.8);
+}
+
+h2 {
+	font-size: 0.8em;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: rgb(62,94,133);
+}
+
+h2 span {
+	letter-spacing: 0em;
+	font-weight: 200;
+	text-transform: none;
+	color: #777;
+	font-size: 0.75em;
+}
+
+#currentwx {
+	text-align: center;
+}
+
+#temp {
+	font-size: 6em;
+	font-weight: 700;
+}
+
+div#currentwx #temp.frigid
+{
+	color: rgb(131,62,153);
+}
+
+div#currentwx #temp.cold
+{
+	color: rgb(27,54,155);
+}
+
+div#currentwx #temp.moderate
+{
+	color: rgb(0,132,68);
+}
+
+div#currentwx #temp.warm
+{
+	color: rgb(210,178,0);
+}
+
+div#currentwx #temp.verywarm
+{
+	color: rgb(210,104,0);
+}
+
+div#currentwx #temp.hot
+{
+	color: rgb(146,0,0);
+}
+
+#sky {
+	font-size: 2em;
+	font-weight: 200;
+	color: #444;
+	margin-bottom: 18px;
+}
+
+#feels-like {
+	font-size: 1.4em;
+	font-weight: 200;
+	margin-bottom: 18px;
+	margin-top: -5px;
+	color: #777;
+}
+
+#feels-like span {
+	font-weight: 700;
+}
+
+#feels-like span.wc {
+	color: #090082;
+}
+
+#feels-like span.hi {
+	color: #c81c00;
+}
+
+#others {
+	clear: both;
+}
+
+ul#others {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#others li {
+	width: 50%;
+	float: left;
+	font-weight: 600;
+	padding: 2px 0;
+}
+
+#others span.title {
+	font-weight: 200;
+	color: #777;
+}
+
+.updated-time {
+	clear: both;
+	font-size: 0.7em;
+	padding-top: 8px;
+	color: #777;
+}
+
+.updated-time a {
+	color: #777;
+}
+
+#currentwx .updated-time {
+	margin-bottom: 20px;
+}
+
+#advisories ul {
+	list-style: none;
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+
+#advisories li.alert {
+	border: 1px solid #DDD;
+	background-color: #EEE;
+	padding: 10px;
+	display: block;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+#advisories ul li span.alert-name {
+	font-weight: bold;
+}
+
+#advisories ul li span.alert-timing {
+	display: block;
+	font-size: 0.8em;
+	color: #444;
+}
+
+#advisories li.alert ul {
+	font-size: 0.85em;
+	padding: 10px;
+	margin-top: 10px;
+	border: 1px solid #DDD;
+	background-color: #FFF;
+}
+
+#advisories li.alert ul {
+	display: none;
+}
+
+#forecast ul {
+	list-style: none;
+	margin: 0;
+	padding: 20px 0 0 0;
+}
+
+#forecast ul li {
+	padding: 0 0 10px 0;
+	font-weight: 200;
+	font-size: 0.9em;
+	line-height: 1.3em;
+}
+
+#forecast .day {
+	font-weight: 500;
+	display: block;
+	color: #444;
+	font-size: 1.1em;
+}
+
+#footer {
+	background-color: #444;
+	padding: 10px;
+	color: #DDD;
+	margin-top: 20px;
+}
+
+#footer h2 {
+	color: #EEE;
+	max-width: 768px;
+	margin: 10px auto;
+}
+
+#footer-wrapper {
+	font-size: 0.8em;
+	font-weight: 200;
+	max-width: 768px;
+	margin: 0 auto;
+}
+
+#footer a {
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+@media screen and (min-width: 600px) {
+	h1.main-title {
+		font-size: 2em;
+	}
+
+	h2 {
+		font-size: 0.9em;
+	}
+
+	#temp {
+		font-size: 7em;
+	}
+}

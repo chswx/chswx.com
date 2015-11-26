@@ -1,13 +1,92 @@
 <?php
 include('config.php');
 
+//
+// Decode the data.
+// 
 $data = json_decode(file_get_contents(CHSWX_DATA_PATH),true);
-$temperature = $data['current_observation']['temp_f'];
+
+//
+// Set up data ahead of time.
+//
+
+// Current conditions
+if(isset($data['current_observation'])) {
+	$ob = $data['current_observation'];
+	$temperature = $ob['temp_f'] . "&deg;";
+
+	// Feels like (heat index/wind chill)
+	$feels_like_temp = $ob['feelslike_f'] . "&deg;";
+	if(!empty($ob['heat_index_f'])) {
+		$feels_like_type = 'hi';
+	}
+	elseif(!empty($ob['windchill_f'])) {
+		$feels_like_type = 'wc';
+	}
+	$display_feels_like = $feels_like_temp != $temperature;
+
+	// Temperature color
+	if($temperature < 28)
+	{
+		$tempcolor = "frigid";
+	}
+	else if ($temperature > 28 && $temperature < 50)
+	{
+		$tempcolor = "cold";
+	}
+	else if ($temperature >= 50 && $temperature < 70)
+	{
+		$tempcolor = "moderate";
+	}
+	else if ($temperature >= 70 && $temperature < 83)
+	{
+		$tempcolor = "warm";
+	}
+	else if ($temperature >= 83 && $temperature < 95)
+	{
+		$tempcolor = "verywarm";
+	}
+	else
+	{
+		$tempcolor = "hot";
+	}
+
+	// Sensible weather
+	$sky = $ob['weather'];
+
+	// Winds
+	if($ob['wind_mph'] == 0) {
+		$wind = "Calm";
+	}
+	else {
+		$wind = $ob['wind_dir'] . " " . $ob['wind_mph'];
+	}
+
+	if($ob['wind_gust_mph'] > 0) {
+		$wind .= " (gust {$ob['wind_gust_mph']})";
+	}
+
+	// Other statistics
+	$dewpoint = $ob['dewpoint_f'] . "&deg;F";
+	$rh = $ob['relative_humidity'];
+	$pressure = $ob['pressure_in'] . " in";
+}
+
+
+// Set up the page's title.
+$title = '';
+
+if(isset($temperature) && isset($sky)) {
+	$title = "Currently $temperature / $sky / ";
+}
+
+$title .= "#chswx - Charleston, SC Weather"
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Currently <?php if(isset($data)) { echo $temperature ?> / <?php echo $data['current_observation']['weather']; } ?> | Charleston, SC Weather</title>
+<title><?php echo $title?></title>
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=A00YePnb9k">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=A00YePnb9k">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=A00YePnb9k">
@@ -29,7 +108,7 @@ $temperature = $data['current_observation']['temp_f'];
 <meta name="msapplication-TileImage" content="/mstile-144x144.png?v=A00YePnb9k">
 <meta name="theme-color" content="#ffffff">
 <style type="text/css">
-<?php include('inc/css/style.css'); ?>
+<?php include('inc/css/responsive-style.css'); ?>
 </style>
 <?php 
 if(GOOGLE_ANALYTICS) {
@@ -39,60 +118,33 @@ if(GOOGLE_ANALYTICS) {
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script>
 $(document).ready(function($) {
-	$('.alert-title').click(function(event) {
-		console.log(event.target.parentNode.id.toString());
-		var parentID = '#' + event.target.parentNode.id.toString();
-		$(parentID + ' ul').toggle();
+	$('.alert').click(function(event) {
+		var toggleID = '#' + event.currentTarget.id.toString();
+		$(toggleID + ' ul').toggle();
 	});
 });
 </script>
 </head>
 <body>
+
+<h1 class="main-title"><span class="city" title="Charleston Weather">#chswx</span></h1>
 <div id="wrapper">
-<h1><span class="city" title="Charleston Weather">#chswx</span></h1>
-<div id="current-and-forecast-wrapper">
-<h2>Currently</h2>
 <div id="currentwx">
+<h2>Currently</h2>
 <?php
-// determine temperature color
-
-if($temperature < 28)
-{
-	$tempcolor = "frigid";
-}
-else if ($temperature > 28 && $temperature < 50)
-{
-	$tempcolor = "cold";
-}
-else if ($temperature >= 50 && $temperature < 70)
-{
-	$tempcolor = "moderate";
-}
-else if ($temperature >= 70 && $temperature < 83)
-{
-	$tempcolor = "warm";
-}
-else if ($temperature >= 83 && $temperature < 95)
-{
-	$tempcolor = "verywarm";
-}
-else
-{
-	$tempcolor = "hot";
-}
 if(isset($data['current_observation'])) { 
-	$ob = $data['current_observation'];
-
 	?>
 	<div id="temp" class="<?php echo $tempcolor?>"><?php echo $temperature?></div>
-	<div id="sky"><?php echo $ob['weather'];?></div>
-	<div id="others">
-		<?php if ($ob['feelslike_f'] != $temperature): ?><span class="title">Feels like</span> <?php echo $ob['feelslike_f']?><?php endif; ?>
-		<span class="title">Dewpoint</span> <?php echo $ob['dewpoint_f'];?> 
-		<span class="title">Humidity</span> <?php echo $ob['relative_humidity'];?> 
-		<span class="title">Pressure</span> <?php echo $ob['pressure_in'];?> 
-		<span class="title">Wind</span> <?php echo $ob['wind_dir'];?>&nbsp;<?php echo $ob['wind_mph']?> <?php if($ob['wind_gust_mph'] > 0): ?>(gusts to <?php echo $ob['wind_gust_mph']?>)<?php endif ;?>
-	</div>
+	<?php if ($display_feels_like): ?>
+	<div id="feels-like">Feels Like <span class="<?php echo $feels_like_type?>"><?php echo $feels_like_temp?></span></div>
+	<?php endif; ?>
+	<div id="sky"><?php echo $sky;?></div>
+	<ul id="others">
+		<li><span class="title">Wind</span> <?php echo $wind?></li>
+		<li><span class="title">Dewpoint</span> <?php echo $dewpoint;?></li>
+		<li><span class="title">Humidity</span> <?php echo $rh;?></li>
+		<li><span class="title">Pressure</span> <?php echo $pressure;?></li>
+	</ul>
 	<div class="updated-time">last updated <?php echo date('M j, Y g:ia',$ob['observation_epoch']); ?></div>
 <?php } else { ?>
 	<div class="fail">Temporarily Unavailable</div>
@@ -125,7 +177,7 @@ if(isset($data['current_observation'])) {
 		{
 			$advisory_class = "normal";
 		}
-		echo "<li class=\"alert\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-title " . $advisory_class . "\"><span class=\"alert-name\">" . $alert['description'] . "</span> until " . $alert['expires'] . ".</span>";
+		echo "<li class=\"alert vtec-phen-{$alert['phenomena']} vtec-sig-{$alert['significance']}\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-name\">" . $alert['description'] . "</span> <span class=\"alert-timing\">until " . $alert['expires'] . "</span>";
 		echo "<ul><li>" . str_replace("\n",'<br />',trim($alert['message'])) . "</li></ul></li>";
 	}
 	?>
@@ -152,8 +204,7 @@ if(isset($data['current_observation'])) {
 	</ul>
 </div>
 </div>
-</div>
-<div id="footer"><div id="footer_wrapper">Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a> and <a href="http://facebook.com/chswx">Facebook</a> / Data by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a><br /><br /><strong>Disclaimer:</strong> Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather.</div>
+<div id="footer"><h2>About @chswx</h2><div id="footer-wrapper">Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a> and <a href="http://facebook.com/chswx">Facebook</a> / Data by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a><br /><br /><strong>Important!</strong> Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather.</div>
 </div>
 </body>
 <!-- Generated on <?php echo date('M j, Y g:ia'); ?> -->
