@@ -87,7 +87,7 @@ $title .= "#chswx - Charleston, SC Weather"
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title><?php echo $title?></title>
-<meta name=viewport content="width=device-width, initial-scale=1">
+<meta name=viewport content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=no">
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=A00YePnb9k">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=A00YePnb9k">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=A00YePnb9k">
@@ -178,6 +178,9 @@ if(isset($data['current_observation'])) {
 		{
 			$advisory_class = "normal";
 		}
+
+		if($alert['expires_epoch'])
+
 		echo "<li class=\"alert vtec-phen-{$alert['phenomena']} vtec-sig-{$alert['significance']}\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-name\">" . $alert['description'] . "</span> <span class=\"alert-timing\">until " . $alert['expires'] . "</span>";
 		echo "<ul><li>" . str_replace("\n",'<br />',trim($alert['message'])) . "</li></ul></li>";
 	}
