@@ -179,9 +179,15 @@ if(isset($data['current_observation'])) {
 			$advisory_class = "normal";
 		}
 
-		if($alert['expires_epoch'])
+		$alert_timing_text = '';
 
-		echo "<li class=\"alert vtec-phen-{$alert['phenomena']} vtec-sig-{$alert['significance']}\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-name\">" . $alert['description'] . "</span> <span class=\"alert-timing\">until " . $alert['expires'] . "</span>";
+		if($alert['date_epoch'] > time()) {
+			$alert_timing_text = "from {$alert['date']} ";
+		}
+
+		$alert_timing_text .= " until {$alert['expires']}";
+
+		echo "<li class=\"alert vtec-phen-{$alert['phenomena']} vtec-sig-{$alert['significance']}\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-name\">" . $alert['description'] . "</span> <span class=\"alert-timing\">$alert_timing_text</span>";
 		echo "<ul><li>" . str_replace("\n",'<br />',trim($alert['message'])) . "</li></ul></li>";
 	}
 	?>
