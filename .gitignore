@@ -5,6 +5,7 @@ cache/
 data/
 composer.lock
 composer.phar
+config.php
 
 # OS generated files #
 
