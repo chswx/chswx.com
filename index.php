@@ -142,9 +142,9 @@ if(isset($data['current_observation'])) {
 	<div id="sky"><?php echo $sky;?></div>
 	<ul id="others">
 		<li><span class="title">Wind</span> <?php echo $wind?></li>
+		<li><span class="title">Pressure</span> <?php echo $pressure;?></li>
 		<li><span class="title">Dewpoint</span> <?php echo $dewpoint;?></li>
 		<li><span class="title">Humidity</span> <?php echo $rh;?></li>
-		<li><span class="title">Pressure</span> <?php echo $pressure;?></li>
 	</ul>
 	<div class="updated-time">last updated <?php echo date('M j, Y g:ia',$ob['observation_epoch']); ?></div>
 <?php } else { ?>
