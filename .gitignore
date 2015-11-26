@@ -5,10 +5,11 @@ cache/
 data/
 composer.lock
 composer.phar
+config.php
 
 # OS generated files #
 
 .DS_Store?
-
+.idea
 /vendor/
 index.html
