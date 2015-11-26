@@ -87,6 +87,7 @@ $title .= "#chswx - Charleston, SC Weather"
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title><?php echo $title?></title>
+<meta name=viewport content="width=device-width, initial-scale=1">
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=A00YePnb9k">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=A00YePnb9k">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=A00YePnb9k">
