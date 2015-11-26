@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>#chswx</title>
+<style type="text/css">
+body {
+	font-family:  -apple-system, Helvetica Neue, Roboto, Arial, sans-serif;
+	margin: 0 auto;
+}
+
+a {
+	color: #005acc;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+div#wrapper {
+	padding: 10px;
+	max-width: 768px;
+	margin: 0 auto;
+}
+
+h1.main-title {
+	background-color: #005acc;
+	color: #FFF;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 5px;
+	border-top: 1px solid #348cd2;
+	border-bottom: 1px solid #003b9f;
+	text-align: center;
+	font-size: 1.6em;
+}
+
+h2 {
+	font-size: 0.8em;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: rgb(62,94,133);
+}
+
+h2 span {
+	letter-spacing: 0em;
+	font-weight: 200;
+	text-transform: none;
+	color: #777;
+}
+
+#temp {
+	font-size: 5em;
+	font-weight: 700;
+}
+
+#sky {
+	font-size: 2em;
+	font-weight: 200;
+	color: #444;
+	margin-bottom: 18px;
+}
+
+#feels-like {
+	font-size: 1.4em;
+	font-weight: 200;
+	margin-bottom: 18px;
+	margin-top: -5px;
+	color: #777;
+}
+
+#feels-like span {
+	font-weight: 700;
+}
+
+#feels-like span.wc {
+	color: #090082;
+}
+
+#feels-like span.hi {
+	color: #c81c00;
+}
+
+#others {
+	clear: both;
+}
+
+ul#others {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#others li {
+	width: 50%;
+	float: left;
+	font-weight: 600;
+	padding: 2px 0;
+}
+
+#others span.title {
+	font-weight: 200;
+	color: #777;
+}
+
+.updated-time {
+	clear: both;
+	font-size: 0.7em;
+	padding-top: 8px;
+	color: #777;
+}
+
+.updated-time a {
+	color: #777;
+}
+
+#currentwx .updated-time {
+	margin-bottom: 20px;
+}
+
+#advisories ul {
+	list-style: none;
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+
+#advisories li.alert {
+	border: 1px solid #DDD;
+	background-color: #EEE;
+	padding: 10px;
+}
+
+#advisories ul li span.alert-name {
+	font-weight: bold;
+}
+
+#advisories ul li span.alert-timing {
+	display: block;
+	font-size: 0.8em;
+	color: #444;
+}
+
+#advisories li.alert ul {
+	font-size: 0.85em;
+	padding: 10px;
+	margin-top: 10px;
+	border: 1px solid #DDD;
+	background-color: #FFF;
+}
+
+#advisories li.alert ul {
+	display: none;
+}
+
+#forecast ul {
+	list-style: none;
+	margin: 0;
+	padding: 20px 0 0 0;
+}
+
+#forecast ul li {
+	padding: 0 0 10px 0;
+	font-weight: 200;
+	font-size: 0.9em;
+	line-height: 1.3em;
+}
+
+#forecast .day {
+	font-weight: 500;
+	display: block;
+	color: #444;
+	font-size: 1.1em;
+}
+
+#footer {
+	background-color: #444;
+	padding: 10px;
+	color: #DDD;
+	margin-top: 20px;
+}
+
+#footer h2 {
+	color: #EEE;
+	max-width: 768px;
+	margin: 10px auto;
+}
+
+#footer-wrapper {
+	font-size: 0.8em;
+	font-weight: 200;
+	max-width: 768px;
+	margin: 0 auto;
+}
+
+#footer a {
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+@media screen and (min-width: 600px) {
+	h1.main-title {
+		font-size: 2em;
+	}
+
+	#currentwx {
+		text-align: center;
+	}
+
+	#temp {
+		font-size: 6em;
+	}
+}
+</style>
+</head>
+<body>
+<h1 class="main-title"><span class="city" title="Charleston Weather">#chswx</span></h1>
+<div id="wrapper">
+<div id="currentwx">
+	<h2>Currently</h2>
+	<div id="temp" class="cold">48</div>
+	<div id="feels-like">Feels Like <span class="hi">44</span></div>
+	<div id="sky">Thunderstorm</div>
+	<ul id="others">
+		<li><span class="title">Wind</span> ENE&nbsp;13</li>
+		<li><span class="title">Dewpoint</span> 39</li>
+		<li><span class="title">Humidity</span> 71%</li>
+		<li><span class="title">Pressure</span> 30.13</li>
+	</ul>
+	<div class="updated-time">last updated Feb 11, 2014 1:56am</div>
+</div>
+<div id="advisories">
+	<h2>Alerts <span>from the National Weather Service</span></h2>
+	<ul>
+	<li class="alert ws-a vtec-a" id="WS-A-1392088260"><span class="alert-name">Winter Storm Watch</span> <span class="alert-timing">until 10:00 AM EST on February 13, 2014</span><ul><li>...Winter Storm Watch remains in effect from late Tuesday night<br />through Thursday morning...<br /><br />* ice accumulations...as high as one tenth to two tenths of an<br /> inch possible.<br /><br />* Timing...rain is forecast to mix with or change to freezing rain<br /> for a period late Tuesday night through Wednesday morning...before<br /> changing back to rain Wednesday afternoon. Additional freezing<br /> rain or freezing drizzle is possible late Wednesday night into<br /> Thursday morning.<br /><br />* Impacts...significant ice accumulation could create dangerous <br /> driving conditions...mainly on bridges...overpasses and <br /> untreated roads. Some damage to trees and power lines is <br /> possible as well as sporadic power outages across the area.<br /><br />Precautionary/preparedness actions...<br /><br />Now is the time to prepare for this winter storm. Once the storm<br />begins...conditions will deteriorate rapidly and travel will<br />become dangerous. Prepare to remain in a safe shelter without<br />electricity for a few hours. Obtain vital supplies such as<br />potable water...non-perishable food...medicine...batteries...<br />flashlights and a battery powered radio.</li></ul></li></div>
+<div id="forecast">
+	<h2>Forecast</h2>
+	<div class="updated-time"><a href="http://weather.gov/chs" target="_blank">NWS forecast</a> for Charleston updated at 10:05 PM EST</div>
+	<ul>
+		<li><span class="day">Tonight</span> <span class="forecast_text">Cloudy. A chance of rain late. Lows in the lower 40s. Northeast winds 15 to 20 mph with gusts up to 30 mph. Chance of rain 20 percent.</span></li>
+					<li><span class="day">Tuesday</span> <span class="forecast_text">Rain. Highs in the mid 40s. Northeast winds 15 to 20 mph. Chance of rain 90 percent. </span></li>
+					<li><span class="day">Tuesday Night</span> <span class="forecast_text">Rain and freezing rain likely. Lows in the mid 30s. Ice accumulation around a trace. Northeast winds 15 to 20 mph with gusts up to 30 mph. Chance of precipitation 70 percent. </span></li>
+					<li><span class="day">Wednesday</span> <span class="forecast_text">Rain and freezing rain. Highs around 40...except in the mid 40s near the coast. Northeast winds 15 to 20 mph with gusts up to 30 mph. Chance of precipitation 90 percent. </span></li>
+					<li><span class="day">Wednesday Night</span> <span class="forecast_text">Rain. A chance of freezing rain after midnight. Lows in the mid 30s. North winds 15 to 20 mph with gusts up to 30 mph. Chance of precipitation 90 percent. </span></li>
+					<li><span class="day">Thursday</span> <span class="forecast_text">Partly sunny with a chance of rain and freezing rain. Highs in the upper 40s. Chance of precipitation 50 percent. </span></li>
+					<li><span class="day">Thursday Night</span> <span class="forecast_text">Partly cloudy. Lows in the upper 30s. </span></li>
+					<li><span class="day">Friday</span> <span class="forecast_text">Mostly sunny. Highs in the lower 60s. </span></li>
+						</ul>
+</div>
+</div>
+<div id="footer">
+<h2>About @chswx</h2><div id="footer-wrapper">Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a> and <a href="http://facebook.com/chswx">Facebook</a> / Data by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a><br /><br /><strong>Important!</strong> Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather.</div>
+</div>
+</body>
+</html>
