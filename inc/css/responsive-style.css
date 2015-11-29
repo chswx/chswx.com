@@ -183,6 +183,13 @@ ul#others {
 	display: none;
 }
 
+/* Color-code certain alerts. */
+
+#advisories li.alert.vtec-phen-TO.vtec-sig-A {
+        border-color: rgb(128,0,0);
+}
+
+
 #forecast ul {
 	list-style: none;
 	margin: 0;
