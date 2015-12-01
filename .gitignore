@@ -13,3 +13,5 @@ config.php
 .idea
 /vendor/
 index.html
+*.vim
+.swp
