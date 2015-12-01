@@ -177,10 +177,56 @@ ul#others {
 	margin-top: 10px;
 	border: 1px solid #DDD;
 	background-color: #FFF;
+        color: #000;
 }
 
 #advisories li.alert ul {
 	display: none;
+}
+
+/* Color-code certain alerts. */
+
+#advisories li.alert.vtec-phen-TO.vtec-sig-W span.alert-timing,
+#advisories li.alert.vtec-phen-TO.vtec-sig-A span.alert-timing,
+#advisories li.alert.vtec-phen-FF.vtec-sig-A span.alert-timing {
+        color: #FFF;
+}
+
+/* TO/SV/FF watches */
+
+#advisories li.alert.vtec-phen-TO.vtec-sig-A {
+        border-color: rgb(220,0,0);
+        background-color: rgb(255,97,99);
+        color: #FFF;
+}
+
+#advisories li.alert.vtec-phen-SV.vtec-sig-A {
+        border-color: rgb(255,194,5);
+        background-color: rgb(255,236,69);
+}
+
+#advisories li.alert.vtec-phen-FF.vtec-sig-A {
+        border-color: rgb(0,128,0);
+        background-color: rgb(3,155,11);
+        color: #FFF;
+}
+
+/* TO/SV/FF Warnings */
+
+#advisories li.alert.vtec-phen-TO.vtec-sig-W {
+        border-color: rgb(128,0,0);
+        background-color: rgb(192,0,0);
+        color: #FFF;
+}
+
+#advisories li.alert.vtec-phen-SV.vtec-sig-W {
+        border-color: rgb(198,151,4);
+        background-color: rgb(255,176,14);
+}
+
+#advisories li.alert.vtec-phen-FF.vtec-sig-W {
+        border-color: rgb(0,192,0);
+        background-color: rgb(5,237,17);
 }
 
 #forecast ul {
