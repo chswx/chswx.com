@@ -180,14 +180,14 @@ ul#others {
         color: #000;
 }
 
-/*#advisories li.alert ul {
+#advisories li.alert ul {
 	display: none;
-}*/
+}
 
 /* Color-code certain alerts. */
 
-#advisories li.alert.vtec-phen-TO.vtec-sig-W span.alert-timing, 
-#advisories li.alert.vtec-phen-TO.vtec-sig-A span.alert-timing, 
+#advisories li.alert.vtec-phen-TO.vtec-sig-W span.alert-timing,
+#advisories li.alert.vtec-phen-TO.vtec-sig-A span.alert-timing,
 #advisories li.alert.vtec-phen-FF.vtec-sig-A span.alert-timing {
         color: #FFF;
 }
