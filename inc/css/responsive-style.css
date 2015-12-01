@@ -177,18 +177,35 @@ ul#others {
 	margin-top: 10px;
 	border: 1px solid #DDD;
 	background-color: #FFF;
+        color: #000;
 }
 
-#advisories li.alert ul {
+/*#advisories li.alert ul {
 	display: none;
-}
+}*/
 
 /* Color-code certain alerts. */
 
 #advisories li.alert.vtec-phen-TO.vtec-sig-A {
-        border-color: rgb(128,0,0);
+        border-color: rgb(220,0,0);
+        background-color: rgb(255,97,99);
+        color: #FFF;
 }
 
+#advisories li.alert.vtec-phen-TO.vtec-sig-A span.alert-timing, #advisories li.alert.vtec-phen-FF.vtec-sig-A span.alert-timing {
+        color: #FFF;
+}
+
+#advisories li.alert.vtec-phen-SV.vtec-sig-A {
+        border-color: rgb(255,194,5);
+        background-color: rgb(255,236,69);
+}
+
+#advisories li.alert.vtec-phen-FF.vtec-sig-A {
+        border-color: rgb(0,128,0);
+        background-color: rgb(3,155,11);
+        color: #FFF;
+}
 
 #forecast ul {
 	list-style: none;
