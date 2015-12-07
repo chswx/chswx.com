@@ -16,11 +16,15 @@ if(isset($data['current_observation'])) {
 	$temperature = $ob['temp_f'] . "&deg;";
 
 	// Feels like (heat index/wind chill)
-	$feels_like_temp = $ob['feelslike_f'] . "&deg;";
-	if(!empty($ob['heat_index_f'])) {
+    $feels_like_temp = $ob['feelslike_f'] . "&deg;";
+    // v3.0.3: Set a default feels like type for sanity's sake
+    $feels_like_type = "";
+    // v3.0.3: WU API does not empty out the heat index/wind chill values,
+    // just uses NA when they don't apply...so check against that instead
+    if($ob['heat_index_f'] != "NA") {
 		$feels_like_type = 'hi';
 	}
-	elseif(!empty($ob['windchill_f'])) {
+	elseif($ob['windchill_f'] != "NA") {
 		$feels_like_type = 'wc';
 	}
 	$display_feels_like = $feels_like_temp != $temperature;
@@ -87,6 +91,7 @@ $title .= "#chswx - Charleston, SC Weather"
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title><?php echo $title?></title>
+<meta name=viewport content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=no">
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=A00YePnb9k">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=A00YePnb9k">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=A00YePnb9k">
@@ -141,9 +146,9 @@ if(isset($data['current_observation'])) {
 	<div id="sky"><?php echo $sky;?></div>
 	<ul id="others">
 		<li><span class="title">Wind</span> <?php echo $wind?></li>
+		<li><span class="title">Pressure</span> <?php echo $pressure;?></li>
 		<li><span class="title">Dewpoint</span> <?php echo $dewpoint;?></li>
 		<li><span class="title">Humidity</span> <?php echo $rh;?></li>
-		<li><span class="title">Pressure</span> <?php echo $pressure;?></li>
 	</ul>
 	<div class="updated-time">last updated <?php echo date('M j, Y g:ia',$ob['observation_epoch']); ?></div>
 <?php } else { ?>
@@ -177,7 +182,16 @@ if(isset($data['current_observation'])) {
 		{
 			$advisory_class = "normal";
 		}
-		echo "<li class=\"alert vtec-phen-{$alert['phenomena']} vtec-sig-{$alert['significance']}\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-name\">" . $alert['description'] . "</span> <span class=\"alert-timing\">until " . $alert['expires'] . "</span>";
+
+		$alert_timing_text = '';
+
+		if($alert['date_epoch'] > time()) {
+			$alert_timing_text = "from {$alert['date']} ";
+		}
+
+		$alert_timing_text .= " until {$alert['expires']}";
+
+		echo "<li class=\"alert vtec-phen-{$alert['phenomena']} vtec-sig-{$alert['significance']}\" id=\"{$alert['phenomena']}-{$alert['significance']}-{$alert['date_epoch']}\"><span class=\"alert-name\">" . $alert['description'] . "</span> <span class=\"alert-timing\">$alert_timing_text</span>";
 		echo "<ul><li>" . str_replace("\n",'<br />',trim($alert['message'])) . "</li></ul></li>";
 	}
 	?>

@@ -115,8 +115,9 @@ div#currentwx #temp.hot
 
 ul#others {
 	list-style: none;
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
+	max-width: 350px;
 }
 
 #others li {
@@ -243,7 +244,7 @@ ul#others {
 }
 
 #forecast .day {
-	font-weight: 500;
+	font-weight: 700;
 	display: block;
 	color: #444;
 	font-size: 1.1em;
@@ -251,7 +252,7 @@ ul#others {
 
 #footer {
 	background-color: #444;
-	padding: 10px;
+	padding: 10px 10px 20px 10px;
 	color: #DDD;
 	margin-top: 20px;
 }
