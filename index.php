@@ -16,11 +16,15 @@ if(isset($data['current_observation'])) {
 	$temperature = $ob['temp_f'] . "&deg;";
 
 	// Feels like (heat index/wind chill)
-	$feels_like_temp = $ob['feelslike_f'] . "&deg;";
-	if(!empty($ob['heat_index_f'])) {
+    $feels_like_temp = $ob['feelslike_f'] . "&deg;";
+    // v3.0.3: Set a default feels like type for sanity's sake
+    $feels_like_type = "";
+    // v3.0.3: WU API does not empty out the heat index/wind chill values,
+    // just uses NA when they don't apply...so check against that instead
+    if($ob['heat_index_f'] != "NA") {
 		$feels_like_type = 'hi';
 	}
-	elseif(!empty($ob['windchill_f'])) {
+	elseif($ob['windchill_f'] != "NA") {
 		$feels_like_type = 'wc';
 	}
 	$display_feels_like = $feels_like_temp != $temperature;
