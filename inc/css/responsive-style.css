@@ -15,7 +15,7 @@ div#wrapper {
 	margin: 0 auto;
 }
 
-div.downtime-message {
+div.system-message {
     padding: 10px;
     margin: 10px 0;
     background-color: #ffec94;
