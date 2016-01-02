@@ -134,6 +134,7 @@ $(document).ready(function($) {
 
 <h1 class="main-title"><span class="city" title="Charleston Weather">#chswx</span></h1>
 <div id="wrapper">
+<?php include('message.php'); ?>
 <div id="currentwx">
 <h2>Currently</h2>
 <?php
