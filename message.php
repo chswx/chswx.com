@@ -1,1 +1,0 @@
-<div class="system-message">The primary host for chswx.com is offline due to a denial of service attack against them. This is a backup site and may not be updated as frequently. Follow <a href="http://twitter.com/chswx">@chswx on Twitter</a> for updates.</div>

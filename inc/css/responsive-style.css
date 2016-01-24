@@ -15,10 +15,11 @@ div#wrapper {
 	margin: 0 auto;
 }
 
-div#message {
+div.system-message {
     padding: 10px;
     margin: 10px 0;
     background-color: #ffec94;
+    border: 1px solid #d8c87e;
     font-size: 0.9em;
 }
 

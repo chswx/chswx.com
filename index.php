@@ -219,7 +219,7 @@ if(isset($data['current_observation'])) {
 	</ul>
 </div>
 </div>
-<div id="footer"><h2>About @chswx</h2><div id="footer-wrapper">Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a> and <a href="http://facebook.com/chswx">Facebook</a> / Data by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a><br /><br /><strong>Important!</strong> Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather.</div>
+<div id="footer"><h2>About @chswx</h2><div id="footer-wrapper">Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a> and <a href="http://facebook.com/chswx">Facebook</a> / Data by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a><br /><br /><strong>Important!</strong> Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather. Comments or questions? <a href="http://twitter.com/jaredwsmith">@jaredwsmith</a> on Twitter.</div>
 </div>
 </body>
 <!-- Generated on <?php echo date('M j, Y g:ia'); ?> -->
