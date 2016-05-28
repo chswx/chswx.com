@@ -120,7 +120,7 @@ if(GOOGLE_ANALYTICS) {
 	include('inc/ga.php');
 }
 ?>
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
 <script>
 $(document).ready(function($) {
 	$('.alert').click(function(event) {
