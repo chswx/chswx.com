@@ -2,7 +2,8 @@
     "name": "jaredwsmith/chswx-legacy",
     "description": "Charleston Weather Legacy Site",
     "require": {
-        "nategood/httpful": "*"
+        "nategood/httpful": "*",
+        "patreon/patreon": "^0.1.0"
     },
     "authors": [
         {

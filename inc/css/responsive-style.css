@@ -15,6 +15,10 @@ div#wrapper {
 	margin: 0 auto;
 }
 
+#wrapper ul li {
+    list-style: square;
+}
+
 div.system-message {
     padding: 10px;
     margin: 10px 0;
@@ -265,17 +269,19 @@ ul#others {
 	margin-top: 20px;
 }
 
-#footer h2 {
-	color: #EEE;
-	max-width: 768px;
-	margin: 10px auto;
-}
-
 #footer-wrapper {
-	font-size: 0.8em;
-	font-weight: 200;
 	max-width: 768px;
 	margin: 0 auto;
+}
+
+#footer-wrapper p {
+	font-size: 0.8em;
+	font-weight: 200;
+}
+
+#footer-wrapper h2 {
+	color: #EEE;
+	margin: 10px auto;
 }
 
 #footer a {
