@@ -15,6 +15,10 @@ div#wrapper {
 	margin: 0 auto;
 }
 
+#wrapper ul li {
+    list-style: square;
+}
+
 div.system-message {
     padding: 10px;
     margin: 10px 0;
