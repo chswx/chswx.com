@@ -200,7 +200,7 @@ if(isset($data['current_observation'])) {
 <?php } ?>
 <div id="forecast">
 	<h2>Forecast</h2>
-	<div class="updated-time"><a href="http://weather.gov/chs" target="_blank">NWS forecast</a> for Charleston updated at <?php echo $data['forecast']['txt_forecast']['date']?></div>
+	<div class="updated-time">Forecast for Charleston updated at <?php echo $data['forecast']['txt_forecast']['date']?></div>
 	<ul>
 		<?php 
 			if(isset($data['forecast']['txt_forecast']))
@@ -227,7 +227,7 @@ if(isset($data['current_observation'])) {
         <h2>Support @chswx</h2>
         <p><a href="https://patreon.com/chswx">Become a patron of @chswx</a> and support independent, community-driven local weather journalism. <a href="/supporters/">Thanks to our supporters!</a></p> 
         <h2>Follow @chswx</h2>
-        <p>Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a>, <a href="http://facebook.com/chswx">Facebook</a>, and <a href="https://instagram.com/chswx">Instagram</a>.  Data for this page is provided by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a>'s API and is sourced from the official National Weather Service forecast.</p>
+        <p>Follow Charleston Weather updates on <a href="http://twitter.com/chswx">Twitter</a>, <a href="http://facebook.com/chswx">Facebook</a>, and <a href="https://instagram.com/chswx">Instagram</a>.  Data for this page is provided by <a href="http://www.wunderground.com/US/SC/Charleston.html">Weather Underground</a>'s API.</p>
         <h2>Important!</h2>
         <p>Use this page at your own risk. Not intended for use for life-or-death decisions. Refer to official statements from the National Weather Service/local emergency management in case of severe weather.</p>
     </div>
